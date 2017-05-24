@@ -23,7 +23,7 @@ class BaseConfig:
 
 class Development(BaseConfig):
     SECRET_KEY = 'WEBSITE_DEVELOPMENT'
-    SQLALCHEMY_DATABASE_URI = 'postgres://localhost/website'  # noqa
+    SQLALCHEMY_DATABASE_URI = 'postgres://postgres:@localhost/postgres'
     DEBUG = 1
 
     @classmethod
@@ -62,4 +62,3 @@ def resolve_config(env=''):
         raise SystemExit('Invalid environment provided.')
 
     return cls.lazy_init()
-

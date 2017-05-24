@@ -5,8 +5,7 @@ from website.config import resolve_config
 from website.external import db
 
 
-
-app = create_app(resolve_config(os.getenv('PY_ENV')))
+app = create_app(resolve_config(os.getenv('PY_ENV', 'dev')))
 
 
 @app.cli.command()
@@ -18,6 +17,14 @@ def routes():
         routings.append('{:30s} {:30s} {}'.format(rule.endpoint, methods,
                                                   rule))
     print(*sorted(routings))
+
+
+@app.cli.command()
+def test():
+    """Run the application tests"""
+    import pytest
+
+    pytest.main(["tests"])
 
 
 def make_shell_context():
@@ -38,4 +45,3 @@ app.make_shell_context = make_shell_context
 
 if __name__ == '__main__':
     app.run()
-

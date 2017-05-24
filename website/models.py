@@ -10,7 +10,8 @@ roles_users = db.Table('roles_users',
                        db.Column('user_id', db.ForeignKey('user.id',
                                                           ondelete='CASCADE'),
                                  nullable=False),
-                       db.Unique('role_id', 'user_id', name='ux_role_user'))
+                       db.UniqueConstraint('role_id', 'user_id',
+                                           name='ux_role_user'))
 
 
 class User(db.Model, UserMixin):
@@ -22,4 +23,3 @@ class User(db.Model, UserMixin):
 
 class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-

@@ -14,5 +14,4 @@ def init_app(app):
     """
     for extension in [db, login_manager]:
         extension.init_app(app)
-    Migrate(db, app)
-
+    Migrate(app, db)
