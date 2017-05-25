@@ -53,6 +53,7 @@ class Production(BaseConfig):
     def lazy_init(cls):
         cls.SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
         cls.SECRET_KEY = os.environ['SECRET_KEY']
+        return cls
 
 
 def resolve_config(env=''):
