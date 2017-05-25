@@ -1,6 +1,6 @@
 from flask_login import UserMixin
 
-from website.external import db
+from pyslackers.external import db
 
 
 roles_users = db.Table('roles_users',

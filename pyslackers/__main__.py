@@ -1,9 +1,9 @@
 import logging
 import os
 
-from website import create_app, models
-from website.config import resolve_config
-from website.external import db
+from pyslackers import create_app, models
+from pyslackers.config import resolve_config
+from pyslackers.external import db
 
 
 app = create_app(resolve_config(os.getenv('PY_ENV', 'dev')))

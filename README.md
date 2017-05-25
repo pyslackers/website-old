@@ -8,9 +8,9 @@ Install the dependencies, this is often a one time task (but run it whenever the
 
     pip install -r requirements.txt
 
-Set the application environment variables (check `website/config.py` for others you may need):
+Set the application environment variables (check `pyslackers/config.py` for others you may need):
 
-    export FLASK_APP=website/__main__.py
+    export FLASK_APP=pyslackers/__main__.py
     export FLASK_DEBUG=1
     export PY_ENV=dev
 

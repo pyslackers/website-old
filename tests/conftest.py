@@ -1,8 +1,8 @@
 import pytest
 
-from website import create_app
-from website.config import resolve_config
-from website.external import db
+from pyslackers import create_app
+from pyslackers.config import resolve_config
+from pyslackers.external import db
 
 
 @pytest.fixture()

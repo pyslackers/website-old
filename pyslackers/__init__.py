@@ -1,9 +1,9 @@
 from flask import Flask
 from werkzeug.contrib.fixers import ProxyFix
 
-from website import external
-from website.bp_auth import bp_auth
-from website.bp_main import bp_main
+from pyslackers import external
+from pyslackers.bp_auth import bp_auth
+from pyslackers.bp_main import bp_main
 
 
 def create_app(config):
@@ -12,7 +12,7 @@ def create_app(config):
     application.
     :param config: Configuration object or dictionary
     """
-    app = Flask('website')
+    app = Flask('pyslackers')
 
     app.config.from_object(config)
 

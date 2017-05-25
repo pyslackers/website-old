@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-    image: pyslackers/website
+    image: pyslackers/pyslackers
     depends_on:
     - psql
     links:
