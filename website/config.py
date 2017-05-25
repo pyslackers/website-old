@@ -13,6 +13,13 @@ class BaseConfig:
     SQLALCHEMY_DATABASE_URI = None
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    SLACK = dict(
+        consumer_key=os.getenv('SLACK_CLIENT_ID'),
+        consumer_secret=os.getenv('SLACK_CLIENT_SECRET'),
+        api_token=os.getenv('SLACK_API_TOKEN'),
+        join_channels=os.getenv('SLACK_JOIN_CHANNELS'),
+    )
+
     @classmethod
     def lazy_init(cls):
         """If any variables need to be configured or

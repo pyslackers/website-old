@@ -8,19 +8,11 @@ Install the dependencies, this is often a one time task (but run it whenever the
 
     pip install -r requirements.txt
 
-Make sure you have some sort of postgres running (you can customize the url with `DATABASE_URL`):
-
-    docker-compose up -d psql
-
-Set the application environment variables:
+Set the application environment variables (check `website/config.py` for others you may need):
 
     export FLASK_APP=website/__main__.py
     export FLASK_DEBUG=1
     export PY_ENV=dev
-
-Make sure your database is up-to-date:
-
-    flask db upgrade
 
 Run the app in development mode:
 
@@ -37,10 +29,6 @@ Run the app in development mode:
 ## Commands to be aware of:
 
     flask --help
-
-    # Database
-    flask db migrate -m "Auto create a new migration with this as a message"
-    flask db upgrade
-
+    
     # Info
     flask routes

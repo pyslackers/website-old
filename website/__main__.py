@@ -1,3 +1,4 @@
+import logging
 import os
 
 from website import create_app, models
@@ -6,6 +7,9 @@ from website.external import db
 
 
 app = create_app(resolve_config(os.getenv('PY_ENV', 'dev')))
+logging.basicConfig(level=logging.ERROR)
+logger = logging.getLogger('pyslackers')
+logger.setLevel(logging.DEBUG)
 
 
 @app.cli.command()
@@ -17,14 +21,6 @@ def routes():
         routings.append('{:30s} {:30s} {}'.format(rule.endpoint, methods,
                                                   rule))
     print(*sorted(routings))
-
-
-@app.cli.command()
-def test():
-    """Run the application tests"""
-    import pytest
-
-    pytest.main(["tests"])
 
 
 def make_shell_context():

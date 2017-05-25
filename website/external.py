@@ -1,9 +1,28 @@
+import flask
 from flask_login import LoginManager
 from flask_migrate import Migrate
+from flask_oauthlib.client import OAuth
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
-login_manager = LoginManager()
+# login_manager = LoginManager()
+oauth = OAuth()
+
+
+slack_oauth = oauth.remote_app('slack',
+                               base_url='https://api.slack.com',
+                               request_token_url=None,
+                               access_token_url='https://slack.com/api/oauth.access',
+                               authorize_url='https://slack.com/oauth/authorize',
+                               app_key='SLACK',
+                               request_token_params=dict(
+                                   scope='identity.basic'
+                               ))
+
+
+@slack_oauth.tokengetter
+def _get_slack_token():
+    return flask.session.get('slack_token'), ''
 
 
 def init_app(app):
@@ -12,6 +31,14 @@ def init_app(app):
 
     :param app: Flask application instance
     """
-    for extension in [db, login_manager]:
-        extension.init_app(app)
-    Migrate(app, db)
+    # db, oauth disabled for now TODO
+    # for extension in [db, login_manager, oauth]:
+    # for extension in [db, oauth]:
+    #     extension.init_app(app)
+    # Migrate(app, db)
+
+    # from .models import User
+
+    # @login_manager.user_loader
+    # def _load_user(user_id):
+    #     return User.query.get(int(user_id))

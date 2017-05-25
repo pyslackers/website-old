@@ -1,20 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<head>
+    {% block meta %}
+        <meta charset="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    {% endblock %}
 
-    <title>website</title>
+    <title>{% block title %}PySlackers{% endblock %}</title>
 
-    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet"/>
-    
-    <script defer src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-  </head>
-  <body>
-    {% block body %}
+    {% block link %}
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css"
+              rel="stylesheet"/>
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet"/>
+    {% endblock %}
 
-        {% block content %}{% endblock %}
+    {% block script %}
+        <script defer src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 
-      {% endblock %}
-  </body>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
+        <script defer
+                src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+
+    <header class="header">
+        <h2 class="headline"><a href="{{ url_for('main.index') }}" style="color: white;">PySlackers
+            Community Site</a</h2>
+        <ul class="header-subnav">
+            {# Needs to set active class #}
+            <li><a href="#about_us">About Us</a></li>
+            <li><a href="#projects">Projects</a></li>
+{#            {% if current_user.is_authenticated %}#}
+{#                <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>#}
+{#            {% else %}#}
+{#                <li><a href="{{ url_for('auth.login') }}">Login</a></li>#}
+{#            {% endif %}#}
+        </ul>
+    </header>
+
+    {% block content %}{% endblock %}
+
+
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2017 PySlackers
+                <a class="grey-text text-lighten-4 right" href="https://github.com/pyslackers"
+                   target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+{% endblock %}
+
+{# Flash messages as toasts #}
+{% block messages %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <script type="text/javascript">
+              $(document).ready(function () {
+                {% for category, message in messages %}
+                  Materialize.toast('{{ message }}', 4000);
+                {% endfor %}
+              });
+            </script>
+        {% endif %}
+    {% endwith %}
+{% endblock %}
+</body>
 </html>

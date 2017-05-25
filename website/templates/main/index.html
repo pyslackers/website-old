@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    {# About #}
+    <h4 class="center" id="about_us">About Us</h4>
+    <div class="divider"></div>
+    <div class="section" id="about">
+        <div class="row">
+            <p class="center">
+                Welcome to the PySlackers community site!
+                We are a growing community of <a href="https://python.org" target="_blank">Python</a> enthusiasts,
+                ranging from those starting the language, to those who have been using it for far
+                too long.
+                Our community has a range of resources, from our main presence on Slack to our <a
+                    href="https://github.com/pyslackers" target="_blank">community projects</a>.
+            </p>
+            <div class="container center">
+                <form action="{{ url_for('main.index') }}" method="post">
+                    {{ form.csrf_token }}
+
+                    <div class="col s12 m6 offset-m3 input-field">
+                        <input type="email" class="validate" id="email" name="email"/>
+                        <label for="email">Get an invite!</label>
+
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                            Join
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {# Projects #}
+    <h4 id="projects">Projects</h4>
+    <div class="divider"></div>
+    <div class="section" id="projects">
+
+        {# Provisional Filler #}
+        <div class="row">
+            {% for project in projects %}
+                <div class="col s12 m6 l4">
+                    {% include 'main/project.html' %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
