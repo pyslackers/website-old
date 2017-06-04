@@ -15,19 +15,7 @@
                     href="https://github.com/pyslackers" target="_blank">community projects</a>.
             </p>
             <div class="container center">
-                <form action="{{ url_for('main.index') }}" method="post">
-                    {{ form.csrf_token }}
-
-                    <div class="col s12 m6 offset-m3 input-field">
-                        <input type="email" class="validate" id="email" name="email"/>
-                        <label for="email">Get an invite!</label>
-
-                        <button class="btn waves-effect waves-light" type="submit" name="action">
-                            Join
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
-                </form>
+                {{ join_us() }}
             </div>
         </div>
     </div>
