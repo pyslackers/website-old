@@ -1,0 +1,14 @@
+<header class="header">
+    <h2 class="headline"><a href="{{ url_for('main.index') }}" style="color: white;">PySlackers
+        Community Site</a</h2>
+    <ul class="header-subnav">
+        {# Needs to set active class #}
+        <li><a href="#about_us">About Us</a></li>
+        <li><a href="#projects">Projects</a></li>
+{#            {% if current_user.is_authenticated %}#}
+{#                <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>#}
+{#            {% else %}#}
+{#                <li><a href="{{ url_for('auth.login') }}">Login</a></li>#}
+{#            {% endif %}#}
+    </ul>
+</header>
