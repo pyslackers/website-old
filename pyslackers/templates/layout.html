@@ -1,6 +1,4 @@
 {% from "macros.html" import join_us with context %}
-{% from "macros.html" import header with context %}
-{% from "macros.html" import footer with context %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,13 +30,13 @@
 <body>
 {% block body %}
 
-    {% include 'header.html' %}
+    {% include 'partials/header.html' %}
 
     <div class="container">
         {% block content %}{% endblock %}
     </div>
 
-    {% include 'footer.html' %}
+    {% include 'partials/footer.html' %}
 
 {% endblock %}
 
