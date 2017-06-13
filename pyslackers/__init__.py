@@ -2,7 +2,6 @@ from flask import Flask
 from werkzeug.contrib.fixers import ProxyFix
 
 from pyslackers import external
-from pyslackers.bp_auth import bp_auth
 from pyslackers.bp_main import bp_main
 
 

@@ -3,9 +3,7 @@ from flask import (
     Blueprint,
     current_app,
     flash,
-    redirect,
     render_template,
-    url_for,
 )
 
 from .forms import InviteRequestForm
@@ -30,33 +28,46 @@ def index():
         else:
             flash('Error trying to send: ' + r.json().get('error'),
                   category='warning')
-    return render_template('main/index.html',
-                           form=form,
+    return render_template('main/index.html', form=form,
                            # TODO: pull from dynamic source
                            projects=[
                                {
                                    'title': 'SirBot-A-Lot',
-                                   'description': 'A pluggable community driven bot, utilizing'
-                                                  ' asyncio',
-                                    'url': 'https://github.com/pyslackers/sir-bot-a-lot',
-                                   'image_url': 'https://github.com/pyslackers/sir-bot-a-lot'
-                                                '/blob/master/icon/icon-500.png?raw=true',
+                                   'description':
+                                   'A pluggable community driven bot,'
+                                   ' utilizing asyncio',
+                                   'url':
+                                   'https://github.com/pyslackers/'
+                                   'sir-bot-a-lot', 'image_url':
+                                   'https://github.com/pyslackers/'
+                                   'sir-bot-a-lot'
+                                   '/blob/master/icon/icon-500.png?raw=true',
                                },
                                {
                                    'title': 'PySlackers Website',
-                                   'description': 'A community website, used as a way for the '
-                                                  'community to teach younger Python developers '
-                                                  'and bring in new members.',
-                                   'url': 'https://github.com/pyslackers/website',
-                                   'image_url': 'https://github.com/pyslackers/sir-bot-a-lot'
-                                                '/blob/master/icon/icon-500.png?raw=true',
+                                   'description':
+                                   'A community website, used as a way for the'
+                                   ' community to teach younger Python '
+                                   'developers and bring in new members.',
+                                   'url':
+                                   'https://github.com/pyslackers/website',
+                                   'image_url':
+                                   'https://github.com/pyslackers/'
+                                   'sir-bot-a-lot'
+                                   '/blob/master/icon/icon-500.png?raw=true',
                                },
                                {
                                    'title': 'Community Resources',
-                                   'description': 'Resources for Python developers of all skill '
-                                                  'levels. Curated to not waste people\'s time.',
-                                   'url': 'https://github.com/pyslackers/learning-resources',
-                                   'image_url': 'https://github.com/pyslackers/sir-bot-a-lot'
-                                                '/blob/master/icon/icon-500.png?raw=true',
+                                   'description':
+                                   'Resources for Python developers of '
+                                   'all skill levels.'
+                                   'Curated to not waste people\'s time.',
+                                   'url':
+                                   'https://github.com/pyslackers/learning-'
+                                   'resources',
+                                   'image_url':
+                                   'https://github.com/pyslackers/'
+                                   'sir-bot-a-lot'
+                                   '/blob/master/icon/icon-500.png?raw=true',
                                },
                            ])

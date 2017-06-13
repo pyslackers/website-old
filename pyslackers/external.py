@@ -1,6 +1,4 @@
 import flask
-from flask_login import LoginManager
-from flask_migrate import Migrate
 from flask_oauthlib.client import OAuth
 from flask_sqlalchemy import SQLAlchemy
 
@@ -12,8 +10,10 @@ oauth = OAuth()
 slack_oauth = oauth.remote_app('slack',
                                base_url='https://api.slack.com',
                                request_token_url=None,
-                               access_token_url='https://slack.com/api/oauth.access',
-                               authorize_url='https://slack.com/oauth/authorize',
+                               access_token_url='https://slack.com/api/\
+                               oauth.access',
+                               authorize_url='https://slack.com/oauth/\
+                               authorize',
                                app_key='SLACK',
                                request_token_params=dict(
                                    scope='identity.basic'
