@@ -41,6 +41,7 @@ class Development(BaseConfig):
 
 
 class Testing(BaseConfig):
+    SECRET_KEY = 'TESTING_KEY'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
     TESTING = 1
 
@@ -56,8 +57,7 @@ class Production(BaseConfig):
         return cls
 
 
-def resolve_config(env=''):
-    cls = None
+def resolve_config(env):
     if env in ['dev', 'development']:
         cls = Development
     elif env in ['uat', 'test', 'testing']:
