@@ -6,7 +6,7 @@ from flask import (
     render_template,
 )
 
-from .forms import InviteRequestForm
+from pyslackers.forms import InviteRequestForm
 
 
 bp_main = Blueprint('main', __name__)

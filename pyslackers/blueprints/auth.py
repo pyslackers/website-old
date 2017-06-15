@@ -8,8 +8,8 @@ from flask import (
 )
 from flask_login import login_user, logout_user
 
-from .external import db, slack_oauth
-from .models import User
+from pyslackers.external import db, slack_oauth
+from pyslackers.models import User
 
 
 bp_auth = Blueprint('auth', __name__)
