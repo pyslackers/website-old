@@ -1,3 +1,4 @@
+import binascii
 import os
 import sys
 from pathlib import Path
@@ -52,7 +53,8 @@ class Production(BaseConfig):
 
     @classmethod
     def lazy_init(cls):
-        cls.SECRET_KEY = os.environ['SECRET_KEY']
+        cls.SECRET_KEY = os.getenv('SECRET_KEY',
+                                   binascii.hexlify(os.urandom(32)).decode())
         return cls
 
 
