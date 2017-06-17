@@ -30,7 +30,7 @@ class BaseConfig:
 
 class Development(BaseConfig):
     SECRET_KEY = 'WEBSITE_DEVELOPMENT'
-    SQLALCHEMY_DATABASE_URI = f'sqlite:///{PROJECT_ROOT / "dev.sqlite3"}'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///{}'.format(PROJECT_ROOT / "dev.sqlite3")  # noqa
     DEBUG = 1
 
     @classmethod
@@ -48,7 +48,7 @@ class Testing(BaseConfig):
 
 class Production(BaseConfig):
     SECRET_KEY = None
-    SQLALCHEMY_DATABASE_URI = f'sqlite:///{PROJECT_ROOT / "prod.sqlite3"}'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///{}'.format(PROJECT_ROOT / "prod.sqlite3")  # noqa
 
     @classmethod
     def lazy_init(cls):
