@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 
-PROJECT_ROOT = Path(__name__).parent.parent
+PROJECT_ROOT = Path(__file__).parent.parent
 
 
 class BaseConfig:
@@ -30,7 +30,7 @@ class BaseConfig:
 
 class Development(BaseConfig):
     SECRET_KEY = 'WEBSITE_DEVELOPMENT'
-    SQLALCHEMY_DATABASE_URI = 'postgres://postgres:@localhost/postgres'
+    SQLALCHEMY_DATABASE_URI = f'sqlite:///{PROJECT_ROOT / "dev.sqlite3"}'
     DEBUG = 1
 
     @classmethod
@@ -48,11 +48,10 @@ class Testing(BaseConfig):
 
 class Production(BaseConfig):
     SECRET_KEY = None
-    SQLALCHEMY_DATABASE_URI = None
+    SQLALCHEMY_DATABASE_URI = f'sqlite:///{PROJECT_ROOT / "prod.sqlite3"}'
 
     @classmethod
     def lazy_init(cls):
-        cls.SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
         cls.SECRET_KEY = os.environ['SECRET_KEY']
         return cls
 
